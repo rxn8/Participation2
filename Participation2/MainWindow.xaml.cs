@@ -24,5 +24,42 @@ namespace Participation2
         {
             InitializeComponent();
         }
+
+        private void btnAddToy_Click(object sender, RoutedEventArgs e)
+        {
+            string manufacturer, name;
+            double price;
+            manufacturer = txtManufacturer.Text;
+                if (string.IsNullOrEmpty(manufacturer))
+                {
+                    MessageBox.Show("Please enter a manufacturer.");
+                    return;
+                }
+            name = txtName.Text;
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("Please enter a name.");
+                    return;
+                }
+            bool priceIsDouble = Double.TryParse(txtPrice.Text, out double doubleTest);
+            if (priceIsDouble)
+            {
+                price = Convert.ToDouble(txtPrice.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid price.");
+                return;
+            }
+
+            Toy toy = new Toy()
+            {
+                Manufacturer = manufacturer,
+                Name = name,
+                Price = price
+            };
+
+            lstToys.Items.Add(toy);
+        }
     }
 }
