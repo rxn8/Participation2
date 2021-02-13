@@ -61,5 +61,16 @@ namespace Participation2
 
             lstToys.Items.Add(toy);
         }
+
+        private void lstToys_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            {
+                if (lstToys.SelectedItem != null)
+                {
+                    Toy selectedToy = (Toy)lstToys.SelectedItem;
+                    MessageBox.Show($"Manufacturer: {selectedToy.Manufacturer}\nName: {selectedToy.Name}\nPrice: ${selectedToy.Price}\nAisle: {selectedToy.GetAisle()}", "Toy Details:");
+                }
+            }
+        }
     }
 }
